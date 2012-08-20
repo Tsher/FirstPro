@@ -1,0 +1,14 @@
+flowkeypost: function (flowid) {
+        list.show();
+        /*根据flowid 获取到相应流程查看html*/
+        $.ajax({
+            type: "get",
+            dateType: "html",
+            data: "flowid=" + flowid + "&time=" + new Date().getTime(),
+            url: "/ex/flowstate.ashx/getstate",
+            success: function (data) {
+                list.hide();
+                $.MessageShowHtml("流程审批记录", data, 400, 300);
+            }
+        });
+    }
